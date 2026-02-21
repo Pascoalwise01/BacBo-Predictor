@@ -1,6 +1,5 @@
 let results = [];
 
-// Chart.js setup
 const ctx = document.getElementById('resultsChart').getContext('2d');
 const chart = new Chart(ctx, {
     type: 'bar',
@@ -14,34 +13,32 @@ const chart = new Chart(ctx, {
     },
     options: {
         responsive: true,
-        scales: { y: { beginAtZero: true, max:100 } }
+        scales: { y: { beginAtZero:true, max:100 } }
     }
 });
 
-// Carrega histórico real fornecido pelo usuário
-function loadRealHistory() {
+function loadRealHistory(){
     const input = document.getElementById("realHistoryInput").value;
-    if (!input) return;
-    const arr = input.split(',').map(r => r.trim().toUpperCase());
-    results = arr.filter(r => ["P","B","T"].includes(r));
+    if(!input) return;
+    const arr = input.split(',').map(r=>r.trim().toUpperCase());
+    results = arr.filter(r=>["P","B","T"].includes(r));
     updateDisplay();
 }
 
-// Adiciona nova rodada manual
 function addResult(type){
     results.push(type);
     updateDisplay();
 }
 
 function resetGame(){
-    results = [];
-    document.getElementById("realHistoryInput").value = "";
+    results=[];
+    document.getElementById("realHistoryInput").value="";
     updateDisplay();
 }
 
 function displayHistory(){
-    const historyDiv = document.getElementById("history");
-    historyDiv.innerHTML = "";
+    const historyDiv=document.getElementById("history");
+    historyDiv.innerHTML="";
     results.forEach(r=>{
         const span=document.createElement("span");
         span.textContent=r;
@@ -53,9 +50,9 @@ function displayHistory(){
 function calculateStats(){
     let total=results.length;
     if(total===0) return [0,0,0];
-    let countP = results.filter(r=>"P"===r).length;
-    let countB = results.filter(r=>"B"===r).length;
-    let countT = results.filter(r=>"T"===r).length;
+    let countP=results.filter(r=>"P"===r).length;
+    let countB=results.filter(r=>"B"===r).length;
+    let countT=results.filter(r=>"T"===r).length;
     return [
         ((countP/total)*100).toFixed(1),
         ((countB/total)*100).toFixed(1),
@@ -63,7 +60,6 @@ function calculateStats(){
     ];
 }
 
-// Média móvel últimos 5 resultados
 function movingAverage(last=5){
     const recent=results.slice(-last);
     return [
@@ -73,7 +69,6 @@ function movingAverage(last=5){
     ];
 }
 
-// Sequência forte
 function detectSequence(){
     if(results.length===0) return "Nenhuma sequência ainda.";
     let last=results[results.length-1], count=1;
@@ -84,11 +79,10 @@ function detectSequence(){
     return count>=3?`Sequência forte de ${last} (${count} consecutivos)`:"Nenhuma sequência forte no momento.";
 }
 
-// Sugestão semi-inteligente
 function intelligentSuggestion(){
     if(results.length===0) return "Nenhum histórico carregado";
 
-    let [countP,countB,countT] = [
+    let [countP,countB,countT]=[
         results.filter(r=>"P"===r).length,
         results.filter(r=>"B"===r).length,
         results.filter(r=>"T"===r).length
@@ -99,13 +93,11 @@ function intelligentSuggestion(){
     let probB=countB/total;
     let probT=countT/total;
 
-    // Aleatoriedade leve
     const variation=0.1;
     probP=Math.min(Math.max(probP+(Math.random()*2*variation-variation),0),1);
     probB=Math.min(Math.max(probB+(Math.random()*2*variation-variation),0),1);
     probT=Math.min(Math.max(probT+(Math.random()*2*variation-variation),0),1);
 
-    // Normaliza
     const sum=probP+probB+probT;
     probP/=sum; probB/=sum; probT/=sum;
 
