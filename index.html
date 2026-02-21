@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Bake Boo Predictor - PWA</title>
+    <title>Bake Boo Predictor</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ffcc00">
@@ -10,10 +10,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>📊 Bake Boo - Previsões Inteligentes</h1>
+        <h1>📊 Bake Boo Predictor</h1>
 
         <div class="input-history">
-            <h3>Histórico Real:</h3>
             <input type="text" id="realHistoryInput" placeholder="Ex: P,B,P,T,B,P">
             <button onclick="loadRealHistory()">Carregar Histórico</button>
         </div>
@@ -25,36 +24,19 @@
             <button class="reset" onclick="resetGame()">Reset</button>
         </div>
 
-        <div class="history">
-            <h3>Histórico Atual:</h3>
-            <div id="history"></div>
-        </div>
-
-        <div class="stats">
-            <h3>Estatísticas:</h3>
-            <p id="stats"></p>
-        </div>
-
-        <div class="suggestion">
-            <h3>Previsão Inteligente:</h3>
-            <p id="suggestion"></p>
-        </div>
-
-        <div class="sequence">
-            <h3>Sequência Forte:</h3>
-            <p id="sequence"></p>
-        </div>
-
-        <div class="chart-container">
-            <canvas id="resultsChart"></canvas>
-        </div>
+        <div id="history"></div>
+        <div id="stats"></div>
+        <div id="suggestion"></div>
+        <div id="sequence"></div>
+        <canvas id="resultsChart"></canvas>
     </div>
 
     <script src="script.js"></script>
     <script>
       if('serviceWorker' in navigator){
         navigator.serviceWorker.register('sw.js')
-        .then(()=>console.log('Service Worker registrado'));
+        .then(()=>console.log('Service Worker registrado'))
+        .catch(err=>console.log('Erro no SW:', err));
       }
     </script>
 </body>
