@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.player { background: #2196f3; }
+.banker { background: #f44336; }
+.tie { background: #4caf50; }
+.reset { background: #777; }
+
+#history span {
+    padding: 5px;
+    margin: 3px;
+    display: inline-block;
+}
