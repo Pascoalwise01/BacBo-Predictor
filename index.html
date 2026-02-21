@@ -2,13 +2,19 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Bake Boo Analyzer - Educativo</title>
+    <title>Bake Boo Predictor - Inteligente</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>📊 Bake Boo - Análise Estatística</h1>
+        <h1>📊 Bake Boo - Previsões Inteligentes</h1>
+
+        <div class="input-history">
+            <h3>Histórico Real:</h3>
+            <input type="text" id="realHistoryInput" placeholder="Ex: P,B,P,T,B,P">
+            <button onclick="loadRealHistory()">Carregar Histórico</button>
+        </div>
 
         <div class="buttons">
             <button class="player" onclick="addResult('P')">Player</button>
@@ -18,7 +24,7 @@
         </div>
 
         <div class="history">
-            <h3>Histórico:</h3>
+            <h3>Histórico Atual:</h3>
             <div id="history"></div>
         </div>
 
@@ -28,16 +34,13 @@
         </div>
 
         <div class="suggestion">
-            <h3>Sugestão Estatística:</h3>
+            <h3>Previsão Inteligente:</h3>
             <p id="suggestion"></p>
         </div>
 
-        <div class="bank">
-            <h3>Simulador de Banca:</h3>
-            <p>Banca inicial: <input type="number" id="bankInput" value="1000"> 
-            <button onclick="setBank()">Definir</button></p>
-            <p>Aposta por rodada: <input type="number" id="betInput" value="50"></p>
-            <p>Saldo atual: <span id="balance">1000</span></p>
+        <div class="sequence">
+            <h3>Sequência Forte:</h3>
+            <p id="sequence"></p>
         </div>
 
         <div class="chart-container">
