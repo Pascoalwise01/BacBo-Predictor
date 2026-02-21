@@ -2,8 +2,10 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Bake Boo Predictor - Inteligente</title>
+    <title>Bake Boo Predictor - PWA</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffcc00">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -49,5 +51,11 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('sw.js')
+        .then(()=>console.log('Service Worker registrado'));
+      }
+    </script>
 </body>
 </html>
