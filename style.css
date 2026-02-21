@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    transition: background 0.5s;
 }
 
 .container {
@@ -54,9 +53,7 @@ button:hover {
     transition: transform 0.2s;
 }
 
-#history span:hover {
-    transform: scale(1.2);
-}
+#history span:hover { transform: scale(1.2); }
 
 .stats, .suggestion, .sequence, .input-history {
     margin-top: 20px;
