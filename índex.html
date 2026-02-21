@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Bake Boo Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>📊 Bake Boo - Análise Estatística</h1>
+
+    <div class="buttons">
+        <button class="player" onclick="addResult('P')">Player</button>
+        <button class="banker" onclick="addResult('B')">Banker</button>
+        <button class="tie" onclick="addResult('T')">Tie</button>
+        <button class="reset" onclick="resetGame()">Reset</button>
+    </div>
+
+    <div class="history">
+        <h3>Histórico:</h3>
+        <div id="history"></div>
+    </div>
+
+    <div class="stats">
+        <h3>Estatísticas:</h3>
+        <p id="stats"></p>
+    </div>
+
+    <div class="suggestion">
+        <h3>Sugestão Estatística:</h3>
+        <p id="suggestion"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
